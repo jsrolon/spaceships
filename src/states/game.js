@@ -21,9 +21,10 @@ class Game extends Phaser.State {
     }
 
     keyTap() {
-        if(this.game.input.keyboard.lastKey === Phaser.Keyboard.W) {
+        if(this.game.input.keyboard.lastKey.keyCode === Phaser.Keyboard.W) {
             this.game.global.score++;
         }
+
         console.log(this.game.global.score);
     }
 
