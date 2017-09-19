@@ -34,7 +34,7 @@ class Game extends Phaser.State {
 
     //setup a timer to end the game
     this.endGameTimer = this.game.time.create();
-    this.endGameTimer.add(Phaser.Timer.SECOND * 15, this.endGame,this);
+    this.endGameTimer.add(Phaser.Timer.SECOND * 10, this.endGame,this);
     this.endGameTimer.start();
   }
 
@@ -47,7 +47,11 @@ class Game extends Phaser.State {
   }
 
   endGame() {
-    this.game.state.start('gameover');
+    if(this.game.global.score > 0) {
+      this.game.state.start('win');
+    } else {
+      this.game.state.start('gameover');
+    }
   }
 
 }
