@@ -1,0 +1,7 @@
+{
+  "generator-phaser": {
+    "projectName": "spaceships",
+    "esVersion": 6,
+    "gameFolder": "game"
+  }
+}
