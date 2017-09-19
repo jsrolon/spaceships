@@ -1,4 +1,4 @@
-class Menu extends Phaser.State {
+class Win extends Phaser.State {
 
   constructor() {
     super();
@@ -77,4 +77,4 @@ class Menu extends Phaser.State {
 
 }
 
-export default Menu;
+export default Win;

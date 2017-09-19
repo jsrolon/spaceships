@@ -33,7 +33,6 @@ class Boot extends Phaser.State {
       score: 0
     };
   }
-
 }
 
 export default Boot;

@@ -3,17 +3,14 @@ import Target from '../prefabs/target';
 
 class Game extends Phaser.State {
 
+  keyDown = false;
+  wKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
+
   constructor() {
     super();
   }
   
   create() {
-    //add background image
-    this.background = this.game.add.sprite(0,0,'background');
-    this.background.height = this.game.world.height;
-    this.background.width = this.game.world.width;
-
-
     //setup UI
     this.countdownText = this.add.text(this.game.world.centerX, 0, '', {
       font: '40px Arial', fill: '#ffffff', align: 'center'
@@ -23,27 +20,21 @@ class Game extends Phaser.State {
     //set up click listeners
     this.game.input.onDown.add(this.shoot, this);
 
-    //setup audio
-    this.gunshot = this.game.add.audio('gunshot');
-
-    //setup prefabs
-    this.crosshairs = new Crosshairs(this.game);
-    this.target = new Target(this.game,this.game.world.centerX,this.game.world.centerY);
-    this.game.add.existing(this.crosshairs);
-    this.game.add.existing(this.target);
-
     //setup a timer to end the game
     this.endGameTimer = this.game.time.create();
     this.endGameTimer.add(Phaser.Timer.SECOND * 10, this.endGame,this);
     this.endGameTimer.start();
   }
 
-  shoot(click){
-    this.gunshot.play();
-  }
-
   update() {
-    this.countdownText.setText( (this.endGameTimer.duration/1000).toFixed(1));
+    if(this.wKey.isDown) {
+      if(!this.keyDown) {
+          this.game.global.score++;
+      }
+      this.keyDown = true;
+    } else {
+      this.keyDown = false;
+    }
   }
 
   endGame() {
