@@ -27,20 +27,8 @@ class Game extends Phaser.State {
     }
 
     keyTap() {
-        switch (this.game.input.keyboard.lastKey.keyCode) {
-            case Phaser.Keyboard.W:
-                this.ship.move(Directions.FORWARD);
-                break;
-            case Phaser.Keyboard.S:
-                this.ship.move(Directions.BACKWARD);
-                break;
-            case Phaser.Keyboard.A:
-                this.ship.move(Directions.LEFT);
-                break;
-            case Phaser.Keyboard.D:
-                this.ship.move(Directions.RIGHT);
-                break;
-        }
+        let dirDelta = Directions[this.game.input.keyboard.lastKey.keyCode];
+        this.ship.move(dirDelta);
     }
 }
 
