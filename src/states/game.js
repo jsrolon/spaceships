@@ -1,7 +1,13 @@
+import CivilianShip from "../prefabs/civilian_ship";
+
 class Game extends Phaser.State {
 
     constructor() {
         super();
+    }
+
+    preload() {
+        this.load.image('civilian_ship', 'assets/civilian_ship.png');
     }
 
     create() {
@@ -10,6 +16,10 @@ class Game extends Phaser.State {
             font: '40px Arial', fill: '#ffffff', align: 'center'
         });
         this.countdownText.anchor.set(0.5, 0);
+
+        // create the user's ship
+        this.ship = new CivilianShip(this.game);
+        this.game.add.existing(this.ship);
 
         //set up click listeners
         this.game.input.keyboard.addCallbacks(this, this.keyTap);
