@@ -24,11 +24,6 @@ class Game extends Phaser.State {
 
         //set up click listeners
         this.game.input.keyboard.addCallbacks(this, this.keyTap);
-
-        //setup a timer to end the game
-        this.endGameTimer = this.game.time.create();
-        this.endGameTimer.add(Phaser.Timer.SECOND * 10, this.endGame, this);
-        this.endGameTimer.start();
     }
 
     keyTap() {
@@ -45,16 +40,6 @@ class Game extends Phaser.State {
             case Phaser.Keyboard.D:
                 this.ship.move(Directions.RIGHT);
                 break;
-        }
-    }
-
-    endGame() {
-        this.game.input.keyboard.stop();
-
-        if (this.game.global.score > 10) {
-            this.game.state.start('win');
-        } else {
-            this.game.state.start('gameover');
         }
     }
 }
