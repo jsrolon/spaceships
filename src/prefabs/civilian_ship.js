@@ -1,10 +1,7 @@
-class CivilianShip extends Phaser.Sprite {
+import Ship from './base/ship';
 
-    constructor(game, x, y, frame) {
-        super(game, x, y, 'civilian_ship', frame);
+class CivilianShip extends Ship {
 
-        this.anchor.setTo(0.5, 0.5);
-    }
 }
 
 export default CivilianShip;
